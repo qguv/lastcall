@@ -1,0 +1,6 @@
+# Major student centers
+Den Haag HS
+Leiden Centraal
+
+# For testing
+Amsterdam Centraal
