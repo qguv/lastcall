@@ -1,5 +1,5 @@
 # Major student centers
-Den Haag HS
+Den Haag HS, 2515 The Hague
 Leiden Centraal
 
 # For testing
