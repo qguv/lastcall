@@ -11,7 +11,7 @@ Read the code. It's under 140 lines and heavily annotated.
 ### With docker
 ```bash
 # get a google maps directions api key
-echo "my api key" >> src/apikey.txt
+echo "my api key" > src/apikey.txt
 
 # change source/destination files to suit you
 vim -p src/{source,destinations}.txt
@@ -27,7 +27,7 @@ pacman -S docker
 
 ```bash
 # get a google maps directions api key
-echo "my api key" >> src/apikey.txt
+echo "my api key" > src/apikey.txt
 
 # change source/destination files to suit you
 vim -p src/{source,destinations}.txt
