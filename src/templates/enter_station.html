@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>lastcall: kies een bestemming</title>
+    {{ moment.include_jquery() }}
+    <script type="text/javascript">
+
+      function show_station() {
+        $("#submit").val("Even geduld a.u.b.");
+        var station = $("#dropdown").val();
+        if (station === "!") {
+          station = $("#textbox").val();
+        }
+        location.href = "/custom/" + encodeURI(station);
+      }
+
+      function handle_other() {
+        if ($("#dropdown").val() === "!") {
+          $("#textbox").show();
+        } else {
+          $("#textbox").hide();
+        }
+      }
+
+      $(document).ready(function() {
+        $("#dropdown").change(handle_other);
+        $("#submit").click(show_station);
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Kies een bestemming</h1>
+    <select id="dropdown">
+      {% for d in destinations %}
+      <option value="{{ d }}">{{ d }}</option>
+      {% endfor %}
+      <option value="!">Ander&hellip;</option>
+    </select>
+    <input style="display:none;" type="text" id="textbox" name="station"></input>
+    <button type="button" id="submit">Zoek</button>
+  </body>
+</html>

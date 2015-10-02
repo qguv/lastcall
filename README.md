@@ -21,6 +21,10 @@ pacman -S docker
 
 # run the project in a container
 ./run.sh
+
+# Alternatively, you can execute specific commands or scripts (instead of
+# directly running the application) as an option to run.sh.
+./run.sh ./test.py
 ```
 
 ### Without docker
@@ -44,6 +48,9 @@ pip install googlemaps
 # command might be 'python3' on your system
 python src/lastcall.py
 ```
+
+## Testing & Running Options
+
 
 ## Sample output
 

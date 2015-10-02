@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>lastcall: {{ station }}</title>
+    {{ moment.include_jquery() }}
+    {{ moment.include_moment() }}
+  </head>
+  <body>
+    <h1>{{ station }}</h1>
+
+    {% if not routes %}
+    <h2 style="color: darkred;">Geen OV-routes gevonden!</h2>
+    {% else %}
+    <table>
+      <tr>
+        <th>Vertrekstijd</th>
+        <th>Aankomsttijd</th>
+      </tr>
+      {% for r in routes %}
+      <tr>
+        {# moment converts UTC Python objects to client local time strings #}
+        <td>{{ moment(r.depart).format("hh:mm") }}</td>
+        <td>{{ moment(r.arrive).format("hh:mm") }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% endif %}
+
+    <a href="/">Probeer opnieuw?</a>
+  </body>
+</html>

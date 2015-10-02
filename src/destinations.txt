@@ -1,6 +1,6 @@
 # Major student centers
 Den Haag HS, 2515 The Hague
-Leiden Centraal
+Leiden Centraal, 2312 AJ Leiden
 
 # For testing
 Amsterdam Centraal

@@ -59,6 +59,7 @@ def find_route_times(api_client, req_departure: datetime, destination, source=re
     try:
         departure = datetime.fromtimestamp(route_raw["departure_time"]["value"])
         arrival = datetime.fromtimestamp(route_raw["arrival_time"]["value"])
+        from pprint import pprint; pprint(routes[0]) #DEBUG
     except KeyError: # no route found
         return
 
@@ -89,7 +90,7 @@ def largest_key_each_value(pairs: [("key", "value")]) -> [("key", "value")]:
     # put the pairs back in the input type and format
     return [ orig_type(k, v) for v, k in sorted(inverse_map.items(), key=lambda x: x[0]) ]
 
-def get_options(api_client, destination, now=datetime.now()) -> [Route]:
+def get_route_options(api_client, destination, now=datetime.utcnow()) -> [Route]:
     '''Finds arrival times if you were to pack up between ten minutes and an
     hour from now, in intervals of ten minutes. (0, 10, 20, 30, 40, 50)'''
 
@@ -121,16 +122,3 @@ def cli_result_display(routes: [Route]):
         print("|               |\n|  No transit!  |\n|               |")
 
     print("\_______________/\n")
-
-################################################################################
-
-DEST = "Den Haag HS, 2515 Den Haag"
-gmaps = setup_maps()
-print("\nDisplayed now:")
-cli_result_display(get_options(gmaps, DEST))
-print("\nDisplayed at ten-thirty:")
-cli_result_display(get_options(gmaps, DEST, now=datetime(2015, 10, 5, hour=10, minute=30)))
-print("\nDisplayed at twenty-two hundred:")
-cli_result_display(get_options(gmaps, DEST, now=datetime(2015, 10, 5, hour=22)))
-print("\nDisplayed at midnight:")
-cli_result_display(get_options(gmaps, DEST, now=datetime(2015, 10, 5)))
