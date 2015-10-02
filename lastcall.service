@@ -1,0 +1,15 @@
+[Unit]
+Description=lastcall container
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker stop lastcall
+ExecStartPre=-/usr/bin/docker rm lastcall
+ExecStartPre=/usr/bin/docker pull qguv/lastcall
+ExecStart=/usr/bin/docker run -p 80:80 --rm --name %n lastcall
+
+[Install]
+WantedBy=multi-user.target

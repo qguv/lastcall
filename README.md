@@ -4,9 +4,9 @@ _Tells you your last chance to get home via public transit._
 
 ## Documentation
 
-Read the code. It's under 140 lines and heavily annotated.
+Read the code. It's under 200 lines and heavily annotated.
 
-## Running the current proof-of-concept
+## Running
 
 ### With docker
 ```bash
